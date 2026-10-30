@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رسالة ليك 🤍</title>
+<style>
+  :root { --pink:#f7a9c4; --deep:#b83261; --cream:#fff8fb; }
+  * { box-sizing: border-box; }
+  body {
+    margin:0; min-height:100vh; overflow-x:hidden;
+    font-family: Tahoma, Arial, sans-serif;
+    background: linear-gradient(145deg,#fff6fa,#ffe2ed,#fff9fc);
+    color:#633347; display:flex; align-items:center; justify-content:center;
+    padding:28px 14px;
+  }
+  .glow {
+    position:fixed; width:240px; height:240px; border-radius:50%;
+    background:rgba(255,174,205,.28); filter:blur(30px); z-index:0;
+    animation: drift 8s ease-in-out infinite alternate;
+  }
+  .g1 { top:-70px; right:-60px; }
+  .g2 { bottom:-90px; left:-50px; animation-delay:-3s; }
+  @keyframes drift { from{transform:translate(0,0)} to{transform:translate(22px,-18px)} }
+  .card {
+    position:relative; z-index:1; width:min(680px,100%);
+    background:rgba(255,255,255,.82); border:1px solid rgba(255,255,255,.95);
+    border-radius:28px; padding:clamp(24px,5vw,46px);
+    box-shadow:0 18px 55px rgba(155,54,91,.13);
+    text-align:center; backdrop-filter:blur(8px);
+    animation: appear 1s ease both;
+  }
+  @keyframes appear { from{opacity:0; transform:translateY(18px)} to{opacity:1; transform:translateY(0)} }
+  .heart { font-size:38px; display:inline-block; animation: beat 1.5s ease-in-out infinite; }
+  @keyframes beat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.13)} }
+  h1 { color:var(--deep); font-size:clamp(25px,5vw,36px); margin:12px 0 8px; }
+  .intro { color:#a45b77; margin:0 0 24px; font-size:15px; }
+  .message { text-align:right; font-size:clamp(16px,3.2vw,19px); line-height:2.05; white-space:pre-line; }
+  .message p { margin:0 0 18px; }
+  .divider { color:#e28aaa; letter-spacing:8px; margin:22px 0; }
+  .ending { color:var(--deep); font-weight:bold; }
+  .signature { margin-top:26px; color:#b85e80; font-size:15px; }
+  .floating-heart {
+    position:fixed; bottom:-35px; z-index:0; pointer-events:none; opacity:0;
+    animation: floatUp linear forwards;
+  }
+  @keyframes floatUp {
+    0% { transform:translateY(0) rotate(0deg); opacity:0; }
+    15% { opacity:.65; }
+    100% { transform:translateY(-110vh) rotate(28deg); opacity:0; }
+  }
+  .hint { margin-top:18px; font-size:12px; color:#b47b90; }
+</style>
+</head>
+<body>
+<div class="glow g1"></div><div class="glow g2"></div>
+<main class="card">
+  <div class="heart">🤍</div>
+  <h1>في كلام نفسي أقولهولك</h1>
+  <p class="intro">اقرأه براحتك… الكلام ده من قلبي 🩷</p>
+  <section class="message">
+    <p>يمكن إنت متعرفش إنت بقيت إيه بالنسبالي، بس الحقيقة إن وجودك في حياتي بقى من الحاجات اللي بفرح بيها من قلبي. 🤍</p>
+    <p>إنت ظهرت فجأة، من غير أي ترتيب، بس مع الوقت بقيت شخص مهم بالنسبالي أكتر ما كنت أتخيل. بقيت أحب أحكي معاك، وأشاركك تفاصيل يومي، وألاقي في وجودك حاجة حلوة بتخلّي يومي أحلى.</p>
+    <p>مش عارفة إذا كنت واخد بالك من ده ولا لأ، بس وجودك بيفرق معايا، وكلامك بيفرحني، وتفاصيلك الصغيرة بقت تهمني.</p>
+    <p>يمكن مفيش كلام كفاية يوصف مكانتك عندي، بس كل اللي أعرفه إني مبسوطة إننا اتعرفنا، وإنك بقيت جزء من أيامي.</p>
+    <p>ومهما كانت الأيام هتودينا لفين، أتمنى إنك تفضل فاكر إنك في يوم دخلت حياة حد، وبقيت بالنسباله شخص مميز من غير ما تحتاج تعمل أي حاجة غير إنك تكون إنت..</p>
+  </section>
+  <div class="divider">♡ ♡ ♡</div>
+  <div class="ending">🩷🩷🩷🫂🫂🫂</div>
+  <div class="signature">من حد مبسوط إنك في حياته 🤍</div>
+  <div class="hint">كل قلب هنا بيفكّرك إنك شخص مميز 🩷</div>
+</main>
+<script>
+  const symbols = ["♡","♥","🤍","🩷"];
+  function makeHeart() {
+    const el = document.createElement("span");
+    el.className = "floating-heart";
+    el.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+    el.style.left = Math.random()*100 + "vw";
+    el.style.fontSize = (14 + Math.random()*18) + "px";
+    el.style.animationDuration = (7 + Math.random()*6) + "s";
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 14000);
+  }
+  for (let i=0;i<8;i++) setTimeout(makeHeart, i*450);
+  setInterval(makeHeart, 900);
+</script>
+</body>
+</html>
